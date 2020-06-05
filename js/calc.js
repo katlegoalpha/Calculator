@@ -1,6 +1,6 @@
 let currentTotal = 0;
 let buffer = "0";
-let prevCalcAct;
+let prevCalcAct = null;
 
 const screen = document.querySelector('.screen');
 
@@ -23,9 +23,27 @@ function initialize() {
 }
 
 function DealCalcAct(Action) {
-	if(Action === 'C') {
+	switch(Action) {
+		case 'C':
 		buffer = '0';
 		currentTotal = 0;
+		break;
+		case '=':
+			if(prevCalcAct === null) {
+				//no operator chosen
+				return;
+			}
+			flushOpp(parseInt(buffer));
+			prevCalcAct = null;
+			buffer = currentTotal;
+			currentTotal = 0;
+			break;
+		case '+':
+		case '-':
+		case '*':
+		case '/':
+			DealMath(Action);
+			break;
 	}
 }
 
@@ -34,6 +52,34 @@ function DealNumber(StringDigit) {
 		buffer = StringDigit;
 	} else {
 		buffer += StringDigit;
+	}
+}
+
+function DealMath(Action) {
+	if(buffer === '0') {
+		//nothing happens
+		return;
+	}
+	
+	const intBuffer = parseInt(buffer);
+	if(currentTotal === 0) {
+		currentTotal = intBuffer;
+	} else {
+		flushOpp(intBuffer);
+	}
+	prevCalcAct = Action;
+	buffer = '0';
+}
+
+function flushOpp(intBuffer) {
+	if(prevCalcAct === '+') {
+		currentTotal += intBuffer;
+	} else if(prevCalcAct === '-') {
+		currentTotal -= intBuffer;
+	} else if(prevCalcAct === '*') {
+		currentTotal *= intBuffer;
+	}else if(prevCalcAct === '/') {
+		currentTotal /= intBuffer;
 	}
 }
 
