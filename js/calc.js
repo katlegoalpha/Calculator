@@ -9,7 +9,7 @@ function ClickButton(value) {
 }
 
 function initialize() {
-	document.querySelector('.cal-buttons')
+	document.querySelector('.calc-buttons')
 		.addEventListener('click', function(event) {
 			ClickButton(event.target.innerText);
 		})
