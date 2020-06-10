@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
-  background-color: black;
   font-family: 'Architects Daughter', cursive;
+  background:#0d332a;
 }
 
 .calcGrid {
@@ -9,7 +9,7 @@
 	justify-content:center;
 	width:100%;
 	text-align:center;
-	padding-top: 20px;
+	padding-top: 115px;
 }
 
 body {
