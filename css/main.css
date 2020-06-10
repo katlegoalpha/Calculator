@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  background-image: url("/assets/ahnRbG.gif");
+  background-image: url("assets/ahnRbG.gif");
   font-family: 'Architects Daughter', cursive;
 }
 
@@ -9,7 +9,7 @@
 	justify-content:center;
 	width:100%;
 	text-align:center;
-	padding-top: 20px;
+	padding-top: 65px;
 }
 
 body {
